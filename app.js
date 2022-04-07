@@ -8,7 +8,7 @@ function run() {
 function randomNum() {
     let ran = Math.floor(Math.random() * 10) // let is the same thing as var
     let x =  document.getElementById("random") // variable x is created for the repetitive document.getElementById("random")
-   x.innerHTML = ran
+   x.innerHTML = `Computer: ${ran}`
    x.style.backgroundColor = "#2fb570"
    x.style.color = "lightgray"
    x.style.padding = "20px"
@@ -19,6 +19,7 @@ function randomNum() {
    x.style.display = "flex"
    x.style.alignItems = "center"
    x.style.justifyContent = "center"
+   x.style.marginTop = "-60px"
    return ran // returns random number
 }
 
@@ -27,7 +28,7 @@ function randomNum() {
 // every time you click the paragraph without refreshing, a new random number will generate
 
 function userNumber() {
-    let user = document.getElementById("getNumber").value // value means the sequence gets the value of the script with the getNumber id
+    let user = ` User: ${document.getElementById("getNumber").value }`// value means the sequence gets the value of the script with the getNumber id
     let y = document.getElementById("userNumber")
     y.innerHTML = user // When the function runs, the h1 with "userNumber" id will be replaced with the user input number
     y.style.color = "white"
@@ -40,6 +41,7 @@ function userNumber() {
     y.style.alignItems = "center"
     y.style.justifyContent = "center"
     y.style.fontSize = "xx-large"
+    document.getElementById("getNumber").style.display = "none"
     return user // returns user input number
 }
 
@@ -47,6 +49,18 @@ function compareNumbers() {
     let a = userNumber()
     let b = randomNum()
     let z = document.getElementById("compare")
+    z.style.textAlign = "center"
+    z.style.width = "95%"
+    z.style.height = "10vh"
+    z.style.display = "flex"
+    z.style.alignItems = "center"
+    z.style.justifyContent = "center"
+    z.style.fontSize = "xx-large"
+    z.style.padding = "20px"
+    z.style.backgroundColor = "#52c48a"
+    z.style.color = "white"
+    z.style.marginTop = "10px"
+    z.style.marginLeft = "12px"
 
     if (a != b) {
         z.innerHTML = `The numbers are not the same; The computer got ${b} and the user got ${a}.`
