@@ -1,3 +1,19 @@
+let userNum = document.getElementById("getNumber")
+
+userNum.addEventListener("keydown", function (e) {
+    if (e.keyCode == 13) {
+        run(e)
+    }
+})
+
+userNum.focus()
+
+function resetInput() {
+    userNum.value = ""
+}
+
+let counter = 0
+
 function run() {
     let w = document.getElementById("paragraph")
     randomNum() // run() is linked to the paragraph and its onclick property, so including randomNum() in run() will run randomNum() when you click the paragraph
@@ -28,9 +44,9 @@ function randomNum() {
 // every time you click the paragraph without refreshing, a new random number will generate
 
 function userNumber() {
-    let user = ` User: ${document.getElementById("getNumber").value }`// value means the sequence gets the value of the script with the getNumber id
+    let user = `${document.getElementById("getNumber").value }`// value means the sequence gets the value of the script with the getNumber id
     let y = document.getElementById("userNumber")
-    y.innerHTML = user // When the function runs, the h1 with "userNumber" id will be replaced with the user input number
+    y.innerHTML = `User: ${user}` // When the function runs, the h1 with "userNumber" id will be replaced with the user input number
     y.style.color = "white"
     y.style.backgroundColor = "#25e69f"
     y.style.padding = "20px"
@@ -41,7 +57,6 @@ function userNumber() {
     y.style.alignItems = "center"
     y.style.justifyContent = "center"
     y.style.fontSize = "xx-large"
-    document.getElementById("getNumber").style.display = "none"
     return user // returns user input number
 }
 
@@ -49,6 +64,7 @@ function compareNumbers() {
     let a = userNumber()
     let b = randomNum()
     let z = document.getElementById("compare")
+    let c = document.getElementById("counter")
     z.style.textAlign = "center"
     z.style.width = "95%"
     z.style.height = "10vh"
@@ -61,10 +77,17 @@ function compareNumbers() {
     z.style.color = "white"
     z.style.marginTop = "10px"
     z.style.marginLeft = "12px"
+    z.style.marginRight = "10px"
 
     if (a != b) {
         z.innerHTML = `The numbers are not the same; The computer got ${b} and the user got ${a}.`
+        counter++
+        c.innerHTML = "You have tried " + counter + " times."
     } else if (a == b) {
         z.innerHTML = `The numbers are the same; The computer got ${b} and the user got ${a}.`
+        counter++
+        c.innerHTML = "You have tried " + counter + " times to get it right."
+        counter = 0
     }
+    resetInput()
 }
